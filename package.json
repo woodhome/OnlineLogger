@@ -1,0 +1,9 @@
+{
+  "name": "OnlineLogger",
+  "version": "0.0.1",
+  "dependencies":{
+      "express":"*",
+      "winston":"*",
+      "winston-mongodb":"*"
+  }
+}
