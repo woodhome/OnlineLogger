@@ -1,5 +1,5 @@
 {
-  "name": "OnlineLogger",
+  "name": "onlinelogger",
   "version": "0.0.1",
   "dependencies":{
       "express":"*",
