@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loggerApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/log.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    <script src="/simplePagination.js"></script>
+    <script src="/logger.js"></script>
+    <title></title>
+</head>
+<body ng-controller = "loggerController as logger">
+<div style="margin: 10px;">
+    <div class="widget">
+        <div class="widget-extra themed-background-dark">
+            <h3 class="widget-content-light"><strong>日志列表</strong></h3>
+        </div>
+        <div style="padding:20px">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>level</th>
+                    <th>message</th>
+                    <th>timestamp</th>
+                    <th>meta</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="log in logger.logs" >
+                    <td><span ng-bind="log.level"></span></td>
+                    <td><span ng-bind="log.message"></span></td>
+                    <td><span ng-bind="log.timestamp | date : 'yyyy-MM-dd HH:mm:ss'"></span></td>
+                    <td><span ng-bind="log.meta | json"></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="more" ng-show="logger.pagination.numPages > 1" >
+                <ul >
+                    <li style="display: inline-block;padding: 10px;"><a href="" ng-click="logger.prevPage()" ng-show="logger.pagination.page>0">&laquo;</a></li>
+                    <li style="display: inline-block;padding: 10px;" ng-repeat="n in [] | range: logger.pagination.numPages | startFrom: logger.pagination.page:logger.pagination.perPage | limitTo: logger.pagination.perPage" ng-class="{active: n == logger.pagination.page}">
+                        <a href="" ng-show="n != logger.pagination.page" ng-click="logger.toPageId(n)">{{n+1}}</a>
+                        <span ng-bind="n + 1"  ng-show="n == logger.pagination.page"></span>
+                    </li>
+                    <li style="display: inline-block;padding: 10px;"><a href="" ng-click="logger.nextPage()" ng-show="logger.pagination.page<logger.pagination.numPages-1">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

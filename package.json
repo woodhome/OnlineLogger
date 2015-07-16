@@ -5,5 +5,6 @@
       "express":"*",
       "winston":"*",
       "winston-mongodb":"*"
-  }
+  },
+  "main":"./lib/index.js"
 }
