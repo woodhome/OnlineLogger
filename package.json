@@ -1,10 +1,10 @@
 {
   "name": "onlinelogger",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies":{
       "express":"*",
       "winston":"*",
-      "winston-mongodb":"*"
+      "winston-mongo":"*"
   },
   "main":"./lib/index.js"
 }
